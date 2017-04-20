@@ -23,6 +23,10 @@
   (begin (define b (pop!)) (define a (pop!))
          (push! `(∀ ,a ,b))))
 
+(define (there-exists!)
+  (begin (define b (pop!)) (define a (pop!))
+         (push! `(∃ ,a ,b))))
+
 (define (swap!)
   (begin (define b (pop!)) (define a (pop!))
          (push! b) (push! a)))
@@ -72,7 +76,7 @@
     [(¬ not)    (do/1! '¬)]
     [(→ ift)    (do/2! '→)]
     [(↔ iff)    (do/2! '↔)]
-    [(∃ te fs)  (do/2! '∃)]
+    [(∃ te fs)  (there-exists!)];(do/2! '∃)
     [(∀ fa)     (for-all!)]
     [(=: st)    (do/3! '= ':)]
     [(swap)     (swap!)]
